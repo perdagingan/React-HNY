@@ -30,17 +30,7 @@ function App() {
                 opacity: 0,
               },
               preset: "fireworks",
-              particles: {
-                number: {
-                  value: 10, // Adjust the number of particles
-                },
-                size: {
-                  value: 3, // Adjust the size of particles
-                },
-                move: {
-                  speed: 2, // Adjust the speed of particles
-                }
-              },
+              fpsLimit: 60,
             }}
           />
         </div>
