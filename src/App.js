@@ -4,6 +4,7 @@ import { Typewriter } from 'react-simple-typewriter'
 import { useState } from "react";
 import Countdown from "react-countdown";
 import Main from './Main';
+import particlesConfig from "./particles-config";
 
 function App() {
   const [newYearMessage, setNewYearMessage] = useState(["Bye 2023!", "Hitung mundur Tahun Baru", "2024"])
@@ -25,13 +26,7 @@ function App() {
         <div className="absolute top-0 left-0 w-full h-full z-40 bg-black">
         <Particles
             init={particlesInit}
-            options={{
-              background: {
-                opacity: 0,
-              },
-              preset: "fireworks",
-              fpsLimit: 60,
-            }}
+            options={particlesConfig}
           />
         </div>
       
