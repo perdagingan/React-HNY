@@ -1,13 +1,14 @@
 import Particles from "react-particles";
-import { loadFireworksPreset } from "tsparticles-preset-fireworks";
+import { loadFireworksPreset} from "tsparticles-preset-fireworks";
 import { Typewriter } from 'react-simple-typewriter'
 import { useState } from "react";
 import Countdown from "react-countdown";
+import Main from './Main';
 
 function App() {
   const [newYearMessage, setNewYearMessage] = useState(["Bye 2023!", "Hitung mundur Tahun Baru", "2024"])
 
-  const particlesInit = async (engine) => {
+  const particlesInit = async(engine) => {
     await loadFireworksPreset(engine);
   }
 
@@ -18,25 +19,33 @@ function App() {
     return remainingTime;
   }
 
-  function getFireworksAmount() {
-    const currentHour = new Date().getHours();
-
-    if (currentHour >= 23 && currentHour <= 23 && new Date().getMinutes() >= 30) {
-      return 30;
-    } else if (currentHour >= 20 && currentHour <= 23) {
-      return 25;
-    } else {
-      return 5;
-    }
-  }
-
   return (
-    <>
-      <Particles
-        init={particlesInit}
-        options={{ preset: "fireworks", number: getFireworksAmount() }}
-      />
-      <div className="flex flex-col justify-center items-center min-h-screen ">
+      <div>
+        <Main />
+        <div className="absolute top-0 left-0 w-full h-full z-40 bg-black">
+        <Particles
+            init={particlesInit}
+            options={{
+              background: {
+                opacity: 0,
+              },
+              preset: "fireworks",
+              particles: {
+                number: {
+                  value: 10, // Adjust the number of particles
+                },
+                size: {
+                  value: 3, // Adjust the size of particles
+                },
+                move: {
+                  speed: 2, // Adjust the speed of particles
+                }
+              },
+            }}
+          />
+        </div>
+      
+      <div className="flex flex-col justify-center items-center min-h-screen absolute top-0 left-0 w-full h-full">
         <span className="text-white text-4xl font-bold  px-4 z-50">
           <Typewriter
             words={newYearMessage}
@@ -52,7 +61,7 @@ function App() {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
