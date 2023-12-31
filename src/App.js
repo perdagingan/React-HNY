@@ -5,12 +5,13 @@ import { useState } from "react";
 import Countdown from "react-countdown";
 import Main from './Main';
 import particlesConfig from "./particles-config";
+import ChatComponent from "./chatComponent";
 
 function App() {
   const [newYearMessage, setNewYearMessage] = useState(["Bye 2023!", "Hitung mundur Tahun Baru", "2024"])
 
   const particlesInit = async(engine) => {
-    await loadFireworksPreset(engine);
+    await loadFireworksPreset(engine, {sounds: {enable: true}});
   }
 
   function timeLeft() {
@@ -31,6 +32,7 @@ function App() {
         </div>
       
       <div className="flex flex-col justify-center items-center min-h-screen absolute top-0 left-0 w-full h-full">
+        <ChatComponent />
         <span className="text-white text-4xl font-bold  px-4 z-50">
           <Typewriter
             words={newYearMessage}
