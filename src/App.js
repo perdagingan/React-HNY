@@ -18,19 +18,15 @@ function App() {
     return remainingTime;
   }
 
-  // Function to determine the number of fireworks based on the current time
   function getFireworksAmount() {
     const currentHour = new Date().getHours();
 
     if (currentHour >= 23 && currentHour <= 23 && new Date().getMinutes() >= 30) {
-      // Show standard amount of fireworks
-      return 100;
+      return 30;
     } else if (currentHour >= 20 && currentHour <= 23) {
-      // Show less fireworks
-      return 50;
+      return 25;
     } else {
-      // Show minimal or no fireworks
-      return 10;
+      return 5;
     }
   }
 
